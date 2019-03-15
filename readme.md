@@ -7,7 +7,7 @@
 
 ## Testing BackPack
 
-Simple testing backpack pakage with spate/laravel-permission
+Simple testing backpack package with spate/laravel-permission
 
 
 This is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
