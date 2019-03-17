@@ -4,13 +4,15 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\CRUD\CrudTrait; // <--------- this one
 use Spatie\Permission\Traits\HasRoles;// <----- and this one
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    use CanResetPassword;
     use CrudTrait; // <----- this
     use HasRoles; // <------ and this
     /**
