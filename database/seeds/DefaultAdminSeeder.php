@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Backpack\PermissionManager\app\Models\Role;
+//use Spatie\Permission\Models\Role;
 use App\User;
 
 class DefaultAdminSeeder extends Seeder
@@ -17,13 +18,21 @@ class DefaultAdminSeeder extends Seeder
     public function run()
     {
         $user = new User();
-        $user->name = 'admin';
+        $user->name = 'superadmin';
         $user->email = 'admin@dd.com';
         $user->password = bcrypt('secret');
         $user->save();
 
-       $role = Role::create(['name' => 'admin']);
-       Role::create(['name' => 'creator']);
-       $user->assignRole($role);
+        $role = new Role();
+        $role->name = 'superadmin';
+        $role->guard_name = 'backpack';
+        $role->save();
+
+        $user->assignRole($role);
+
+        $role = new Role();
+        $role->name = 'admin';
+        $role->guard_name = 'backpack';
+        $role->save();
     }
 }

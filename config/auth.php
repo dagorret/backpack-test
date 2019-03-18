@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'backpack' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*
