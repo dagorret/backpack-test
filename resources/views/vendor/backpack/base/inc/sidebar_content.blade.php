@@ -12,3 +12,4 @@
       <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/permission') }}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
     </ul>
   </li>
+<li><a href='{{ backpack_url('collection') }}'><i class='fa fa-tag'></i> <span>Colecciones</span></a></li>
