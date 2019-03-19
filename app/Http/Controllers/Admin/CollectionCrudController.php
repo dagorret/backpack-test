@@ -38,7 +38,7 @@ class CollectionCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         //$this->crud->setFromDb();
-        $this->crud->setColumns(['name', 'active']);
+        $this->crud->setColumns(['name', 'active', 'collection-key']);
 
         $this->crud->addField([
             'name' => 'name',
@@ -47,16 +47,15 @@ class CollectionCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-           'name' => 'colletion-key',
-           'label' => 'Clave de Registro',
-           'type' =>  
+           'name' => 'collection-key',
+           'type' => 'text',
+           'label' => 'Clave de Registro'
         ]);
 
         $this->crud->addField([
                     'name' => 'active',
                     'label' => 'Activa',
-                    'type' => 'boolean',
-                    'options' => [0 => 'Activa', 1 => 'Inactiva']
+                    'type' => 'checkbox'
         ]);
 
         // add asterisk for fields that are required in CollectionRequest
