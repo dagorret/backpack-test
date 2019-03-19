@@ -19,8 +19,8 @@ class DocumentCrudController extends CrudController
 {
     public function setup()
     {
-
         $sUuid = Str::orderedUuid();
+
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Basic Information
@@ -35,12 +35,12 @@ class DocumentCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        //$this->crud->setFromDb();
-
         $this->crud->setTitle('Documentos');
         $this->crud->setHeading('Documentos');
+
+        // add asterisk for fields that are required in DocumentRequest
+        $this->crud->setRequiredFields(StoreRequest::class, 'create');
+        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
         $this->crud->addColumn([
             'name' => 'title',
@@ -54,17 +54,14 @@ class DocumentCrudController extends CrudController
 
         $this->crud->addColumn([
             'name' => 'file',
-            'label' => 'Archivo'
+            'label' => 'Archivo',
+            'limit' => 150
         ]);
 
         $this->crud->addColumn([
             'name' => 'link',
             'label' => 'Vínculo'
         ]);
-
-        // add asterisk for fields that are required in DocumentRequest
-        $this->crud->setRequiredFields(StoreRequest::class, 'create');
-        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
 
         $this->crud->addField([
             'name' => 'title',
@@ -74,7 +71,7 @@ class DocumentCrudController extends CrudController
 
         $this->crud->addField([
             'name' => 'description',
-            'type' => 'simplemde',
+            'type' => 'tinymce',
             'label' => 'Descripción',
         ]);
 
@@ -92,13 +89,19 @@ class DocumentCrudController extends CrudController
             'attributes' => [
                 'readonly'=>'readonly',
             ]
-     ]);
+]);
+
+        // TODO: remove setFromDb() and manually define Fields and Columns
+        //$this->crud->setFromDb();
+
+        // add asterisk for fields that are required in DocumentRequest
+        $this->crud->setRequiredFields(StoreRequest::class, 'create');
+        $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
-        $this->$this->crud->link = Str::orderedUuid();
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry

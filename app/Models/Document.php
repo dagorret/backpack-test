@@ -14,10 +14,9 @@ class Document extends Model
     | GLOBAL VARIABLES
     |--------------------------------------------------------------------------
     */
-
     protected $table = 'documents';
     protected $primaryKey = 'id';
-    public $timestamps = false;
+    //public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = ['title', 'description', 'link', 'file'];
     // protected $hidden = [];

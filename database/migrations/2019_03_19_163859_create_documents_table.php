@@ -15,7 +15,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->index();
-            $table->text('description')->index();
+            $table->text('description');
             $table->string('file');
             $table->uuid('link')->unique();
             $table->timestamps();

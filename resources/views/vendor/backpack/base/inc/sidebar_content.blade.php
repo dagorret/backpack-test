@@ -13,4 +13,5 @@
     </ul>
   </li>
 <li><a href='{{ backpack_url('collection') }}'><i class='fa fa-tag'></i> <span>Colecciones</span></a></li>
+
 <li><a href='{{ backpack_url('document') }}'><i class='fa fa-tag'></i> <span>Documentos</span></a></li>
