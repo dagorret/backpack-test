@@ -30,6 +30,16 @@ class CollectionCrudController extends CrudController
         $this->crud->setTitle('Colecciones');
         $this->crud->setHeading('Colecciones');
 
+        $this->crud->addColumn([
+            'name' => 'name',
+            'label' => 'Nombre'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'collecttion-key',
+            'label' => 'Clave'
+        ]);
+
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Configuration
@@ -38,7 +48,8 @@ class CollectionCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         //$this->crud->setFromDb();
-        $this->crud->setColumns(['name', 'active', 'collecttion-key']);
+        //$this->crud->setColumns(['name', 'active', 'collecttion-key']);
+
 
         $this->crud->addField([
             'name' => 'name',
@@ -50,7 +61,7 @@ class CollectionCrudController extends CrudController
         $this->crud->addField([
            'name' => 'collecttion-key',
            'type' => 'text',
-           'label' => 'Clave de Registro',
+           'label' => 'Clave',
            'hint' => 'Este campo se autocompletara desde el Nombre de Colección. O ingrese su propia key'
         ]);
 
@@ -59,7 +70,7 @@ class CollectionCrudController extends CrudController
                     'label' => 'Activa',
                     'type' => 'checkbox'
         ]);
-
+       // $this->crud->enableAjaxTable();
         // add asterisk for fields that are required in CollectionRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
