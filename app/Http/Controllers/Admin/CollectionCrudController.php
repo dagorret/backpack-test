@@ -45,6 +45,9 @@ class CollectionCrudController extends CrudController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        $this->crud->enableBulkActions();
+        $this->crud->addBulkDeleteButton();
+        $this->crud->enableExportButtons();
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         //$this->crud->setFromDb();

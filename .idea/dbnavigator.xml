@@ -23,12 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="dbf3699b-beae-4ca1-811a-ca37afe1ee4e">
-        <schema name="bb" object-types="view, table" />
-        <schema name="fcerepo" object-types="procedure, constraint, column, view, table, function, index, dataset trigger" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="dbf3699b-beae-4ca1-811a-ca37afe1ee4e">
