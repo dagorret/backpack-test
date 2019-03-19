@@ -38,18 +38,20 @@ class CollectionCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         //$this->crud->setFromDb();
-        $this->crud->setColumns(['name', 'active', 'collection-key']);
+        $this->crud->setColumns(['name', 'active', 'collecttion-key']);
 
         $this->crud->addField([
             'name' => 'name',
-            'type' => 'text',
-            'label' => "Colección"
+            'type' => 'ajaxtoslug',
+            'label' => "Colección",
+            'to_slug' => 'collecttion-key'
         ]);
 
         $this->crud->addField([
-           'name' => 'collection-key',
+           'name' => 'collecttion-key',
            'type' => 'text',
-           'label' => 'Clave de Registro'
+           'label' => 'Clave de Registro',
+           'hint' => 'Este campo se autocompletara desde el Nombre de Colección. O ingrese su propia key'
         ]);
 
         $this->crud->addField([
