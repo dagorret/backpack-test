@@ -19,7 +19,7 @@ class Collection extends Model
     protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'active', 'collecttion-key'];
+    protected $fillable = ['name', 'active', 'collecttionkey'];
     // protected $hidden = [];
     // protected $dates = [];
 

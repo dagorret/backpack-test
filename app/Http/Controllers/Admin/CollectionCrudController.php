@@ -8,6 +8,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\CollectionRequest as StoreRequest;
 use App\Http\Requests\CollectionRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
+use Spatie\Permission\Models\Permission;
 
 /**
  * Class CollectionCrudController
@@ -18,11 +19,13 @@ class CollectionCrudController extends CrudController
 {
     public function setup()
     {
+        $this->request->flashOnly(['collectionkey']);
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
+
         $this->crud->setModel('App\Models\Collection');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/collection');
         $this->crud->setEntityNameStrings('collection', 'collections');
@@ -36,7 +39,7 @@ class CollectionCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
-            'name' => 'collecttion-key',
+            'name' => 'collecttionkey',
             'label' => 'Clave'
         ]);
 
@@ -58,11 +61,11 @@ class CollectionCrudController extends CrudController
             'name' => 'name',
             'type' => 'ajaxtoslug',
             'label' => "Colección",
-            'to_slug' => 'collecttion-key'
+            'to_slug' => 'collecttionkey'
         ]);
 
         $this->crud->addField([
-           'name' => 'collecttion-key',
+           'name' => 'collecttionkey',
            'type' => 'text',
            'label' => 'Clave',
            'hint' => 'Este campo se autocompletara desde el Nombre de Colección. O ingrese su propia key'
@@ -85,11 +88,14 @@ class CollectionCrudController extends CrudController
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        Permission::create(['name' => $this->crud->entry->collecttionkey, 'guard_name' => 'web']);
         return $redirect_location;
     }
 
     public function update(UpdateRequest $request)
     {
+
+        //TODO  :: BUSCAR Y CAMBIAR PERMISO
         // your additional operations before save here
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
